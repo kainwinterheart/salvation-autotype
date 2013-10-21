@@ -1,0 +1,41 @@
+{
+   "abstract" : "Salvation::Autotype itself",
+   "author" : [
+      "Gennadiy Filatov <kain.winterheart@gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Module::Build version 0.4004, CPAN::Meta::Converter version 2.130880",
+   "license" : [
+      "unknown"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Salvation-Autotype",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.36"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Carp::Assert" : "0.20",
+            "Moose" : "2.0402",
+            "perl" : "v5.10.1"
+         }
+      }
+   },
+   "provides" : {
+      "Salvation::Autotype" : {
+         "file" : "lib/Salvation/Autotype.pm",
+         "version" : "1"
+      },
+      "Salvation::Autotype::TypeConstraint" : {
+         "file" : "lib/Salvation/Autotype/TypeConstraint.pm"
+      }
+   },
+   "release_status" : "stable",
+   "version" : "1"
+}

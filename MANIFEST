@@ -1,0 +1,8 @@
+Build.PL
+MANIFEST			This list of files
+META.yml
+META.json
+t/00-ok.t
+t/Salvation/Autotype/Tests/T00OK.pm
+lib/Salvation/Autotype.pm
+lib/Salvation/Autotype/TypeConstraint.pm
