@@ -3,7 +3,7 @@ use warnings;
 
 package Salvation::Autotype;
 
-our $VERSION = 1.00;
+our $VERSION = 1.01;
 
 use Moose;
 
@@ -11,7 +11,7 @@ use Moose::Exporter ();
 
 use Salvation::Autotype::TypeConstraint ();
 
-use Moose::Util::TypeConstraints ( 'class_type', 'register_type_constraint', 'find_type_constraint' );
+use Moose::Util::TypeConstraints ( 'register_type_constraint', 'find_type_constraint' );
 
 use Moose::Meta::TypeCoercion ();
 
@@ -26,13 +26,15 @@ sub autotype
 
 	unless( defined $tc )
 	{
-		my $class_tc = class_type( $class );
-
 		$tc = Salvation::Autotype::TypeConstraint -> new(
 			name => $tc_name,
-			parent => $class_tc,
+			parent => find_type_constraint( 'Object' ),
 			salvation_for_class => $class,
-			coercion => Moose::Meta::TypeCoercion -> new()
+			coercion => Moose::Meta::TypeCoercion -> new(),
+			constraint => sub
+			{
+				return $_ -> isa( $class );
+			}
 		);
 
 		register_type_constraint( $tc );

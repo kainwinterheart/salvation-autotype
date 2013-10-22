@@ -2,7 +2,12 @@ Build.PL
 MANIFEST			This list of files
 META.yml
 META.json
-t/00-ok.t
-t/Salvation/Autotype/Tests/T00OK.pm
 lib/Salvation/Autotype.pm
 lib/Salvation/Autotype/TypeConstraint.pm
+t/00-simple.t
+t/01-union.t
+t/02-cross_require.t
+t/Salvation/Autotype/Tests/T00C1.pm
+t/Salvation/Autotype/Tests/T01C1.pm
+t/Salvation/Autotype/Tests/T02C1.pm
+t/Salvation/Autotype/Tests/T02C2.pm
