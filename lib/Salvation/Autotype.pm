@@ -13,8 +13,6 @@ use Salvation::Autotype::TypeConstraint ();
 
 use Moose::Util::TypeConstraints ( 'register_type_constraint', 'find_type_constraint' );
 
-use Moose::Meta::TypeCoercion ();
-
 Moose::Exporter -> setup_import_methods( with_meta => [ 'autotype' ] );
 
 sub autotype
@@ -30,7 +28,6 @@ sub autotype
 			name => $tc_name,
 			parent => find_type_constraint( 'Object' ),
 			salvation_for_class => $class,
-			coercion => Moose::Meta::TypeCoercion -> new(),
 			constraint => sub
 			{
 				return $_ -> isa( $class );

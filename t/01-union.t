@@ -9,7 +9,7 @@ use Moose;
 
 use Salvation::Autotype;
 
-has 'stuff'	=> ( is => 'ro', isa => sprintf( '%s|Undef|HashRef', autotype( 'Salvation::Autotype::Tests::T01C1' ) ), coerce => 1 );
+has 'stuff'	=> ( is => 'rw', isa => sprintf( '%s|Undef|HashRef', autotype( 'Salvation::Autotype::Tests::T01C1' ) ), coerce => 1 );
 
 no Moose;
 
@@ -20,7 +20,7 @@ use Test::More tests => 5;
 
 subtest 'number' => sub
 {
-	plan tests => 5;
+	plan tests => 6;
 
 	ok( not( exists $INC{ 'Salvation/Autotype/Tests/T01C1.pm' } ), 'module is NOT loaded' );
 
@@ -33,6 +33,8 @@ subtest 'number' => sub
 	isa_ok( $o2, 'Salvation::Autotype::Tests::T01C1', 'stuff()' );
 
 	is( $o2 -> id(), 100500, 'number matches' );
+
+	is( $o1 -> stuff( 42 ) -> id(), 42, 'stuff( 42 ) -> id() is 42' );
 };
 
 subtest 'undef' => sub
@@ -60,13 +62,16 @@ subtest 'hashref' => sub
 
 subtest 'object' => sub
 {
-	plan tests => 1;
+	plan tests => 2;
 
 	my $o = Salvation::Autotype::Tests::T01C1 -> new( id => 0 );
 
 	eval
 	{
-		is( Salvation::Autotype::_tests::t01::Class -> new( stuff => $o ) -> stuff(), $o, 'stuff() is an object' );
+		my $o2 = Salvation::Autotype::_tests::t01::Class -> new( stuff => $o );
+
+		is( $o2 -> stuff(), $o, 'stuff() is an object' );
+		is( $o2 -> stuff( 42 ) -> id(), 42, 'stuff( 42 ) -> id() matches' );
 	};
 };
 
@@ -76,7 +81,21 @@ subtest 'wrong' => sub
 
 	eval
 	{
+		my $o = Salvation::Autotype::_tests::t00::Class -> new( stuff => 0 );
+		$o -> stuff( [] );
+		fail();
+	};
+
+	eval
+	{
 		Salvation::Autotype::_tests::t00::Class -> new( stuff => [] );
+		fail();
+	};
+
+	eval
+	{
+		my $o = Salvation::Autotype::_tests::t00::Class -> new( stuff => 0 );
+		$o -> stuff( 'asd' );
 		fail();
 	};
 
