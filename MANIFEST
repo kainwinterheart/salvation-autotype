@@ -7,7 +7,9 @@ lib/Salvation/Autotype/TypeConstraint.pm
 t/00-simple.t
 t/01-union.t
 t/02-cross_require.t
+t/03-method_delegation.t
 t/Salvation/Autotype/Tests/T00C1.pm
 t/Salvation/Autotype/Tests/T01C1.pm
 t/Salvation/Autotype/Tests/T02C1.pm
 t/Salvation/Autotype/Tests/T02C2.pm
+t/Salvation/Autotype/Tests/T03C1.pm

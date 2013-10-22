@@ -4,7 +4,7 @@
       "Gennadiy Filatov <kain.winterheart@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4004, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.112150",
    "license" : [
       "unknown"
    ],
@@ -23,19 +23,20 @@
          "requires" : {
             "Carp::Assert" : "0.20",
             "Moose" : "2.0402",
-            "perl" : "v5.10.1"
+            "perl" : 0
          }
       }
    },
    "provides" : {
       "Salvation::Autotype" : {
          "file" : "lib/Salvation/Autotype.pm",
-         "version" : "1"
+         "version" : "1.01"
       },
       "Salvation::Autotype::TypeConstraint" : {
-         "file" : "lib/Salvation/Autotype/TypeConstraint.pm"
+         "file" : "lib/Salvation/Autotype/TypeConstraint.pm",
+         "version" : 0
       }
    },
    "release_status" : "stable",
-   "version" : "1"
+   "version" : "1.01"
 }
